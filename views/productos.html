@@ -49,7 +49,7 @@
 
             <div class="container">
                 <div class="row start">
-                     <form id="form">
+                     <form id="form" action="/productos" method="POST">
 						<h3>Produtos</h3><br>
 						Item: <br>
 						 <select name="cars">
@@ -62,14 +62,14 @@
 						 </select>
 						<br>
 						 Nome do solicitante:<br>
-						<input type="text" id="nomSolicitante" placeholder="Informe nome do solicitante">
+						<input type="text" id="nomSolicitante" name="nomSolicitante" placeholder="Informe nome do solicitante">
 						<span class='msg-erro msg-nomSolicitante'></span>
 						<br>
 						 Endereço do solicitante:<br>
-						<input type="text" id="dirPedido" placeholder="Informe endereço do solicitante">
+						<input type="text" id="dirPedido" name="dirPedido" placeholder="Informe endereço do solicitante">
 						<span class='msg-erro msg-dirPedido'></span>
 						<br><br>
-						<input type="button" value="Comprar" class="col-12 center boton" id='botao' onclick="validaPedido()">		
+						<input type="submit" value="Comprar" class="col-12 center boton" id='botao' onclick="validaPedido()">		
 					</form>
                 </div>
             </div>

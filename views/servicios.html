@@ -49,7 +49,7 @@
 
             <div class="container">
                 <div class="row start">
-                     <form id="form">
+                     <form id="form" action="/servicios" method="POST">
 						<h3>Serviços</h3><br>
 						Item: <br>
 						 <select name="cars">
@@ -61,18 +61,18 @@
 						 </select>
 						 <br><br>
 						 Nome da Mascota:<br>
-						 <input type="text" id="nomMascota">
+						 <input type="text" id="nomMascota" name="nomMascota">
 						 <span class='msg-erro msg-nomMascota'></span>
 						 <br>
 						 Nome do proprietário:<br>
-						 <input type="text" id="nomPropietario">
+						 <input type="text" id="nomPropietario" name="nomPropietario">
 						 <span class='msg-erro msg-nomPropietario'></span>
 						 <br>
 						 Endereço do proprietário:<br>
-						 <input type="text" id="dirPedido">
+						 <input type="text" id="dirPedido" name="dirPedido">
 						 <span class='msg-erro msg-dirPedido'></span>
 						 <br><br>
-						<input type="button" value="Solicitar" class="col-12 center boton" id='botao' onclick="validaServicio()">	
+						<input type="submit" value="Solicitar" class="col-12 center boton" id='botao' onclick="validaServicio()">	
 					</form>
                 </div>
             </div>
