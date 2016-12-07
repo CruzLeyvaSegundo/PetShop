@@ -46,38 +46,35 @@
 
 
         <section class="home2">
-
-            <div class="container">
-                <div class="row start">
-                    <form id="form" action="/cadastro" method="POST">
-						<h3>Cadastro mascota</h3><br>						
-						Nome da mascota:<br>
-						<input type="text" id="nomeMascota" name="nomeMascota" placeholder="Infome o NomePet">
-						<span class='msg-erro msg-nomeMascota'></span>
-						<br>
-						Tipo:<br>
-						<input type="radio" name="tipoMascota" value="cachorro" checked>Cachorro
-						<input type="radio" name="tipoMascota" value="gato"> Gato
-						<br>		
-						Raça:<br>
-						<input type="text" id="razaMascota" name="razaMascota" placeholder="Infome a raçaPet">
-						<span class='msg-erro msg-razaMascota'></span>
-						<br>
-						Género:<br>
-						<input type="radio" name="generoMascota" value="macho" checked>Macho.
-						<input type="radio" name="generoMascota" value="hembra">Fêmea
-						<br>
-						Nome do proprietário:<br>
-						<input type="text" id="nomePropietario" name="nomePropietario" placeholder="Informe nome do propietario">
-						<span class='msg-erro msg-nomePropietario'></span>
-						<br>
-						Telefone do contato:<br>
-						<input type="text" id="telPropietario" name="telPropietario" placeholder="Informe um telef. de contato">
-						<span class='msg-erro msg-telPropietario'></span>
-						<br><br>
-						<input type="submit" value="Cadastrar" class="col-12 center boton" id='botao' onclick="validaCadastro()">		
-					</form>
-                </div>
+            <div class="row container">
+                <form id="form" action="/cadastro" method="POST">
+					<h3>Cadastro mascota</h3><br>						
+					Nome da mascota:<br>
+					<input type="text" id="nomeMascota" name="nomeMascota" placeholder="Infome o NomePet">
+					<span class='msg-erro msg-nomeMascota'></span>
+					<br>
+					Tipo:<br>
+					<input type="radio" name="tipoMascota" value="cachorro" checked>Cachorro
+					<input type="radio" name="tipoMascota" value="gato"> Gato
+					<br>		
+					Raça:<br>
+					<input type="text" id="razaMascota" name="razaMascota" placeholder="Infome a raçaPet">
+					<span class='msg-erro msg-razaMascota'></span>
+					<br>
+					Género:<br>
+					<input type="radio" name="generoMascota" value="macho" checked>Macho.
+					<input type="radio" name="generoMascota" value="hembra">Fêmea
+					<br>
+					Nome do proprietário:<br>
+					<input type="text" id="nomePropietario" name="nomePropietario" placeholder="Informe nome do propietario">
+					<span class='msg-erro msg-nomePropietario'></span>
+					<br>
+					Telefone do contato:<br>
+					<input type="text" id="telPropietario" name="telPropietario" placeholder="Informe um telef. de contato">
+					<span class='msg-erro msg-telPropietario'></span>
+					<br><br>
+					<input type="submit" value="Cadastrar" class="col-12 center boton" id='botao' onclick="validaCadastro()">		
+				</form>
             </div>
 
         </section>

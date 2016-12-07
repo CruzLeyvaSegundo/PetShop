@@ -24,8 +24,8 @@
     -moz-background-size: 100% 88%;
     text-align: left;
     color: #1e1e28;
-    padding: 8% 60%;
-    box-sizing: border-box;
+    padding: 8% 60%; /*8 60*/
+    box-sizing: border-b1ox;
     height: 100%;
 }
 .home3{
