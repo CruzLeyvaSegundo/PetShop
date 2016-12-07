@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PetShop</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8" />
+		<style type="text/css">
+			.msg-erro
+			{ 
+				color: red; 
+			}
+		</style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav class="row between middle">
+
+                    <div class="row">
+                        <a href="index.html">
+                            <img src="logoPet.svg"/ height=60 width=60>
+                        </a>
+						<a href="index.html" class="row middle">
+							<h2>PetShop</h2>
+						</a>
+                    </div>
+
+                    <div class="col-3 end">
+                        <ul class="row between">
+                            <li class="col">
+                                <a href="cadastro.html" class="layout_a">Cadastro Pet</a>
+                                </li>
+                            <li class="col">
+                                <a href="productos.html" class="layout_a">Produtos</a>
+                            </li>
+                            <li class="col">
+                                <a href="servicios.html" class="layout_a">Serviços</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+        </header>
+
+
+        <section class="home4">
+
+            <div class="container">
+                <div class="row start">
+                     <form id="form">
+						<h3>Serviços</h3><br>
+						Item: <br>
+						 <select name="cars">
+							<option value="shower">Shower</option>
+							<option value="pedicure">Pedicure</option>
+							<option value="spa">Spa total</option>
+							<option value="vacuna">Vacinação</option>
+							<option value="cortePelo">Corte de cabelo</option>
+						 </select>
+						 <br><br>
+						 Nome da Mascota:<br>
+						 <input type="text" id="nomMascota">
+						 <span class='msg-erro msg-nomMascota'></span>
+						 <br>
+						 Nome do proprietário:<br>
+						 <input type="text" id="nomPropietario">
+						 <span class='msg-erro msg-nomPropietario'></span>
+						 <br>
+						 Endereço do proprietário:<br>
+						 <input type="text" id="dirPedido">
+						 <span class='msg-erro msg-dirPedido'></span>
+						 <br><br>
+						<input type="button" value="Solicitar" class="col-12 center boton" id='botao' onclick="validaServicio()">	
+					</form>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        2016®- <a href="https://github.com/CruzLeyvaSegundo" target="_blank" class="layout_a">Segundo Cruz</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		<script type="text/javascript" src="validarCampos.js"></script>
+    </body>
+</html>

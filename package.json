@@ -1,0 +1,19 @@
+{
+  "name": "PetShop",
+  "version": "1.0.0",
+  "description": "Nodejs + CouchDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Segundo David Junior Cruz Leyva",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "morgan": "^1.7.0",
+    "stylus": "^0.54.5"
+  }
+}

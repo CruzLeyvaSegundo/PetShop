@@ -1,0 +1,58 @@
+/* Secciones del sitio */
+
+.home{
+    background: #FFFFFF url('mascotaFondo1.jpg');
+	background-repeat: no-repeat;
+    background-position: center center;
+	background-attachment: fixed;
+    background-size: 100% 88%;
+    -webkit-background-size: 100% 88%;
+    -moz-background-size: 100% 88%;
+    text-align: center;
+    color: #1e1e28;/*Color de letra para el body*/
+    padding: 20% 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+.home2{
+    background: #FFFFFF url('mascotaFondo2.jpg');
+	background-repeat: no-repeat;
+    background-position: center center;
+	background-attachment: fixed;
+    background-size: 100% 88%;
+    -webkit-background-size: 100% 88%;
+    -moz-background-size: 100% 88%;
+    text-align: left;
+    color: #1e1e28;
+    padding: 8% 60%;
+    box-sizing: border-box;
+    height: 100%;
+}
+.home3{
+    background: #FFFFFF url('mascotaFondo3.jpg');
+	background-repeat: no-repeat;
+    background-position: center center;
+	background-attachment: fixed;
+    background-size: 100% 88%;
+    -webkit-background-size: 100% 88%;
+    -moz-background-size: 100% 88%;
+    text-align: left;
+    color: #1e1e28;
+    padding: 14% 44%;
+    box-sizing: border-box;
+    height: 100%;
+}
+.home4{
+    background: #FFFFFF url('mascotaFondo4.jpg');
+	background-repeat: no-repeat;
+    background-position: center center;
+	background-attachment: fixed;
+    background-size: 100% 88%;
+    -webkit-background-size: 100% 88%;
+    -moz-background-size: 100% 88%;
+    text-align: left;
+    color: #1e1e28;
+    padding: 10% 50%;
+    box-sizing: border-box;
+    height: 100%;
+}

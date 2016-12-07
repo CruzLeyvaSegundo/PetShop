@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PetShop</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8" />
+		<style type="text/css">
+			.msg-erro
+			{ 
+				color: red; 
+			}
+		</style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav class="row between middle">
+
+                    <div class="row">
+                        <a href="index.html">
+                            <img src="logoPet.svg" height=60 width=60>
+                        </a>
+						<a href="index.html" class="row middle">
+							<h2>PetShop</h2>
+						</a>
+                    </div>
+
+                    <div class="col-3 end">
+                        <ul class="row between">
+                            <li class="col">
+                                <a href="cadastro.html" class="layout_a">Cadastro Pet</a>
+                                </li>
+                            <li class="col">
+                                <a href="productos.html" class="layout_a">Produtos</a>
+                            </li>
+                            <li class="col">
+                                <a href="servicios.html" class="layout_a">Serviços</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+        </header>
+
+
+        <section class="home2">
+
+            <div class="container">
+                <div class="row start">
+                    <form id="form">
+						<h3>Cadastro mascota</h3><br>						
+						Nome da mascota:<br>
+						<input type="text" id="nome" placeholder="Infome o NomePet">
+						<span class='msg-erro msg-nome'></span>
+						<br>
+						Tipo:<br>
+						<input type="radio" name="type" value="cachorro" checked>Cachorro
+						<input type="radio" name="type" value="gato"> Gato
+						<br>		
+						Raça:<br>
+						<input type="text" id="raza" placeholder="Infome a raçaPet">
+						<span class='msg-erro msg-raza'></span>
+						<br>
+						Género:<br>
+						<input type="radio" name="gender" value="macho" checked>Macho.
+						<input type="radio" name="gender" value="hembra">Fêmea
+						<br>
+						Nome do proprietário:<br>
+						<input type="text" id="nomePropietario" placeholder="Informe nome do propietario">
+						<span class='msg-erro msg-nomePropietario'></span>
+						<br>
+						Telefone do contato:<br>
+						<input type="text" id="telPropietario"  placeholder="Informe um telef. de contato">
+						<span class='msg-erro msg-telPropietario'></span>
+						<br><br>
+						<input type="button" value="Cadastrar" class="col-12 center boton" id='botao' onclick="validaCadastro()">		
+					</form>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        2016®- <a href="https://github.com/CruzLeyvaSegundo" target="_blank" class="layout_a">Segundo Cruz</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		<script type="text/javascript" src="validarCampos.js"></script>
+    </body>
+</html>

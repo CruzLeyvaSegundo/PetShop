@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PetShop</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8" />
+		<style type="text/css">
+			.msg-erro
+			{ 
+				color: red; 
+			}
+		</style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav class="row between middle">
+
+                    <div class="row">
+                        <a href="index.html">
+                            <img src="logoPet.svg"/ height=60 width=60>
+                        </a>
+						<a href="index.html" class="row middle">
+							<h2>PetShop</h2>
+						</a>
+                    </div>
+
+                    <div class="col-3 end">
+                        <ul class="row between">
+                            <li class="col">
+                                <a href="cadastro.html" class="layout_a">Cadastro Pet</a>
+                                </li>
+                            <li class="col">
+                                <a href="productos.html" class="layout_a">Produtos</a>
+                            </li>
+                            <li class="col">
+                                <a href="servicios.html" class="layout_a">Serviços</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+        </header>
+
+
+        <section class="home3">
+
+            <div class="container">
+                <div class="row start">
+                     <form id="form">
+						<h3>Produtos</h3><br>
+						Item: <br>
+						 <select name="cars">
+							<option value="coleira">Coleira</option>
+							<option value="dogfood">DogFood</option>
+							<option value="catfood">CatFood</option>
+							<option value="brinquedos">Brinquedos</option>
+							<option value="doghouse">DogHouse</option>
+							<option value="cathouse">CatHouse</option>
+						 </select>
+						<br>
+						 Nome do solicitante:<br>
+						<input type="text" id="nomSolicitante" placeholder="Informe nome do solicitante">
+						<span class='msg-erro msg-nomSolicitante'></span>
+						<br>
+						 Endereço do solicitante:<br>
+						<input type="text" id="dirPedido" placeholder="Informe endereço do solicitante">
+						<span class='msg-erro msg-dirPedido'></span>
+						<br><br>
+						<input type="button" value="Comprar" class="col-12 center boton" id='botao' onclick="validaPedido()">		
+					</form>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        2016®- <a href="https://github.com/CruzLeyvaSegundo" target="_blank" class="layout_a">Segundo Cruz</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		<script type="text/javascript" src="validarCampos.js"></script>
+    </body>
+</html>
