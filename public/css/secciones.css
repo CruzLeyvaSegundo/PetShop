@@ -1,7 +1,7 @@
 /* Secciones del sitio */
 
 .home{
-    background: #FFFFFF url('mascotaFondo1.jpg');
+    background: #FFFFFF url('/images/mascotaFondo1.jpg');
 	background-repeat: no-repeat;
     background-position: center center;
 	background-attachment: fixed;
@@ -15,7 +15,7 @@
     height: 100%;
 }
 .home2{
-    background: #FFFFFF url('mascotaFondo2.jpg');
+    background: #FFFFFF url('/images/mascotaFondo2.jpg');
 	background-repeat: no-repeat;
     background-position: center center;
 	background-attachment: fixed;
@@ -29,7 +29,7 @@
     height: 100%;
 }
 .home3{
-    background: #FFFFFF url('mascotaFondo3.jpg');
+    background: #FFFFFF url('/images/mascotaFondo3.jpg');
 	background-repeat: no-repeat;
     background-position: center center;
 	background-attachment: fixed;
@@ -43,7 +43,7 @@
     height: 100%;
 }
 .home4{
-    background: #FFFFFF url('mascotaFondo4.jpg');
+    background: #FFFFFF url('/images/mascotaFondo4.jpg');
 	background-repeat: no-repeat;
     background-position: center center;
 	background-attachment: fixed;

@@ -14,6 +14,7 @@
   "author": "Segundo David Junior Cruz Leyva",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "jade": "^1.11.0",

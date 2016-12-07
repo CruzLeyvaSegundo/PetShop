@@ -1,9 +1,10 @@
 var express = require('express'),
+	bodyParser = require('body-parser'),
     app     = express();
 
-app.use(express.static('images'));
-app.use(express.static('css'));
-app.use(express.static('scripts'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
 app.engine('html', require('ejs').renderFile);
 app.set("view engine","html");
@@ -27,6 +28,12 @@ app.get('/servicios', function (req, res) {
     res.render('servicios', {});
 });
 
+app.post('/', function (req, res) {
+	if(false)
+	{
+		res.render('index', {});
+	}
+});
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);

@@ -83,8 +83,8 @@ function validaCadastro()
 	{
 		caixa_telPropietario.style.display = 'none';
 	}
-	if(error==0)
-		document.getElementById("form").reset();
+	//if(error==0)
+		//document.getElementById("form").reset();
 }
 function validaPedido()
 {
