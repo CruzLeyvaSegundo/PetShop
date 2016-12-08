@@ -17,11 +17,10 @@ couch.listDatabases().then(function(dbs){
 
 const dbName='mascotas';
 
-const viewUrl = '_design/all_mascotas/_view/allMascotas';
-
-//const viewMascotasUrl = '_design/all_mascotas/_view/allMascotas';
-//const viewPropietariosUrl = '_design/all_propietarios/_view/allPropietarios';
-
+const viewMascotasUrl = '_design/all_mascotas/_view/allMascotas';
+const viewPropietariosUrl = '_design/all_propietarios/_view/allPropietarios';
+const viewProdutosUrl = '_design/all_productos/_view/allProductos';
+const viewServiciosUrl = '_design/all_servicios/_view/allServicios';
 
 
 const app = express();
@@ -59,16 +58,72 @@ app.get('/servicios', function (req, res) {
 });
 
 app.get('/adminCouchDB', function (req, res) {
+	res.render('adminDB',{tabela:'Tabela',etiqueta:['item1','item2','item3'],aux:null,
+							data:[]});
+});
+app.get('/adminCouchDB/Mascotas', function (req, res) {
 	couch.get(dbName,viewMascotasUrl).then(
 		function(data, headers, status){
 			console.log(data.data.rows);
 			res.render('adminDB',{
-				mascotas: data.data.rows
+				tabela: 'Pets',
+				etiqueta: ['nomeMascota','tipoMascota','razaMascota','generoMascota','nomePropietario','telPropietario'],
+				aux:'propietario',
+				data: data.data.rows
 			});
 		},
 		function(err){
 			res.send(err);
 		});
+	//console.log(dataMascota);
+});
+app.get('/adminCouchDB/Donos', function (req, res) {
+	couch.get(dbName,viewPropietariosUrl).then(
+		function(data, headers, status){
+			console.log(data.data.rows);
+			res.render('adminDB',{
+				tabela: 'Donos',
+				etiqueta: ['nomePropietario','telPropietario'],
+				aux: null,
+				data: data.data.rows
+			});
+		},
+		function(err){
+			res.send(err);
+		});
+	//console.log(dataMascota);
+});
+app.get('/adminCouchDB/Produtos', function (req, res) {
+	couch.get(dbName,viewProdutosUrl).then(
+		function(data, headers, status){
+			console.log(data.data.rows);
+			res.render('adminDB',{
+				tabela: 'Produtos pedidos',
+				etiqueta: ['item','precio','nomSolicitante','dirPedido'],
+				aux: null,
+				data: data.data.rows
+			});
+		},
+		function(err){
+			res.send(err);
+		});
+	//console.log(dataMascota);
+});
+app.get('/adminCouchDB/Servicios', function (req, res) {
+	couch.get(dbName,viewServiciosUrl).then(
+		function(data, headers, status){
+			console.log(data.data.rows);
+			res.render('adminDB',{
+				tabela: 'Servicios solicitados',
+				etiqueta: ['item','precio','nomMascota','nomPropietario','dirPedido'],
+				aux: null,
+				data: data.data.rows
+			});
+		},
+		function(err){
+			res.send(err);
+		});
+	//console.log(dataMascota);
 });
 
 app.post('/cadastro', function (req, res) {
@@ -166,6 +221,7 @@ app.post('/adminCouchDB/delete/:id', function (req, res) {
 			res.send(err);
 		});
 });
+
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 

@@ -3,51 +3,55 @@
 <head>
 	<meta charset="UTF-8">
 	<title>adminCouchDB</title>
-	<link href='css/bootstrap.min.css' rel='stylesheet' type="text/css">
-    <link href='css/styleAdmin.css' rel='stylesheet' type="text/css">
+	<link rel='stylesheet' type="text/css" href='/css/bootstrap.min.css'>
+    <link rel='stylesheet' type="text/css" href='/css/styleAdmin.css' >
 </head>
 <body>
 	<nav class=" navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">adminCouchDB PETSHOP</a> |
+			<a class="navbar-brand" href="/adminCouchDB">adminCouchDB PETSHOP</a> |
 		</div>
 	</nav>
-	<form action="/adminCouchDB" method="POST">
-		<h1>Mascotas</h1>
-		<br>
-		<table class="table table-striped table-bordered">
-			<tr>
-				<td><b>nomeMascota</b></td>
-				<td><b>tipoMascota</b></td>
-				<td><b>razaMascota</b></td>
-				<td><b>generoMascota</b></td>
-				<td><b>nomePropietario</b></td>
-				<td><b>telPropietario</b></td>
-				<td><b>Action</b></td>
-			</tr>
-			<% for(var i=0;i<mascotas.length;i++){ %>
-			<tr>
-				<% if(mascotas[i].value.nomeMascota!=null &&mascotas[i].value.tipoMascota!=null &&mascotas[i].value.razaMascota!=null&&mascotas[i].value.generoMascota!=null){ %>
-				<td><%= mascotas[i].value.nomeMascota %></td>
-				<td><%= mascotas[i].value.tipoMascota %></td>
-				<td><%= mascotas[i].value.razaMascota %></td>
-				<td><%= mascotas[i].value.generoMascota %></td>
-				<%} %>
-				<% if(mascotas[i].value.propietario!=null){ %>
-				<td><%= mascotas[i].value.propietario.nomePropietario %></td>
-				<td><%= mascotas[i].value.propietario.telPropietario %></td>
-				<td>
-					<form method="POST" action="/adminCouchDB/delete/<%= mascotas[i].key %>">
-						<input type="hidden" value="<%= mascotas[i].value.rev %>" name="rev">
-						<input type="submit" value=" Delete ">
-					</form>
-				</td>
-				<%} %>
-			</tr>
+	<br>
+	<a class="a btn" href="/adminCouchDB/Mascotas">  Tabela Pet  </a> 
+	<a class="a btn" href="/adminCouchDB/Donos">  Tabela Donos  </a> 
+	<a class="a btn" href="/adminCouchDB/Produtos">  Tabela Produtos  </a> 
+	<a class="a btn" href="/adminCouchDB/Servicios">  Tabela Servicios  </a> 
+	<h1><%= tabela%></h1>
+	<br><br>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<% for(var i=0;i<etiqueta.length;i++){ %>
+			<td><b><%= etiqueta[i]%></b></td>
 			<%} %>
-		</table>
-		<input type="submit" value="Actualizar">
-	</form>	
+			<td><b>Action</td>
+		</tr>
+		
+		<% for(var i=0;i<data.length;i++){ %>
+		<% var count = 0%>
+			<% for(var j=0;j<etiqueta.length;j++){ %>
+			<% if( (data[i].value)[etiqueta[j]]!=null){%>
+			<% count++;%>
+			<% }}%>
+		<% if(  (data[i].value)[etiqueta[0]]!=null && count==etiqueta.length){%>
+  		<tr>
+			<% for(var j=0;j<etiqueta.length;j++){ %>
+				<% var str = etiqueta[j]; %>
+				<% if(  (data[i].value)[str]!=null){%>
+				<td><%= (data[i].value)[str] %></td>
+				<% }else if(j>0){%>
+				<td><%= (data[1].value[aux])[str] %></td>
+			<% }} %>
+			<td>
+				<form method="POST" action="/adminCouchDB/delete/<%= data[i].key %>">
+					<input type="hidden" value="<%= data[i].value.rev %>" name="rev">
+					<input type="submit" value=" Delete ">
+				</form>
+			</td>
+		<%} %>
+		<%} %>
+		</tr>
+	</table>
 	<script type="text/javascript" src="ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js"></script>
 </body>
