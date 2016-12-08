@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>adminCouchBD</title>
+</head>
+<body>
+	<h2>Mascotas</h2>
+	<table>
+	<% mascotas.forEach(function(mascota){ %>
+		<tr>
+			<td><%= mascota.value.nomeMascota %></td>
+			<td><%= mascota.value.tipoMascota %></td>
+			<td><%= mascota.value.razaMascota %></td>
+			<td><%= mascota.value.generoMascota %></td>
+			<td><%= mascota.value.propietario.nomePropietario %></td>
+			<td><%= mascota.value.propietario.telPropietario %></td>
+			<td>
+				<form method="POST" action="/adminCouchBD/delete/<%= mascota.key %>">
+					<input type="hidden" value="<%= mascota.value.rev %>" name="rev">
+					<input type="submit" value=" Delete ">
+				</form>
+			</td>
+		</tr>
+	<%}); %>
+	</table>
+</body>
+</html>
