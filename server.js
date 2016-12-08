@@ -52,11 +52,11 @@ app.get('/servicios', function (req, res) {
     res.render('servicios', {});
 });
 
-app.get('/adminCouchBD', function (req, res) {
+app.get('/adminCouchDB', function (req, res) {
 	couch.get(dbName,viewUrl).then(
 		function(data, headers, status){
 			console.log(data.data.rows);
-			res.render('adminBD',{
+			res.render('adminDB',{
 				mascotas: data.data.rows
 			});
 		},
@@ -131,12 +131,12 @@ app.post('/servicios', function (req, res) {
 	}
 });
 
-app.post('/adminCouchBD/delete/:id', function (req, res) {
+app.post('/adminCouchDB/delete/:id', function (req, res) {
 	const id = req.params.id;
 	const rev = req.body.rev;
 	couch.del(dbName,id,rev).then(
 		function(data, headers, status){
-				res.redirect('/adminCouchBD');
+				res.redirect('/adminCouchDB');
 		},
 		function(err){
 			res.send(err);
