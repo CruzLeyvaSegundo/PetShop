@@ -130,7 +130,9 @@ app.post('/servicios', function (req, res) {
 		res.render('servicios',{});
 	}
 });
-
+app.post('/adminCouchDB', function (req, res) {
+	res.redirect('/adminCouchDB');
+});
 app.post('/adminCouchDB/delete/:id', function (req, res) {
 	const id = req.params.id;
 	const rev = req.body.rev;
