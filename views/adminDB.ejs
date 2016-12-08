@@ -24,22 +24,26 @@
 				<td>nomePropietario</td>
 				<td>telPropietario</td>
 			</tr>
-			<% mascotas.forEach(function(mascota){ %>
+			<% for(var i=0;i<mascotas.length;i++){ %>
 			<tr>
-				<td><%= mascota.value.nomeMascota %></td>
-				<td><%= mascota.value.tipoMascota %></td>
-				<td><%= mascota.value.razaMascota %></td>
-				<td><%= mascota.value.generoMascota %></td>
-				<td><%= mascota.value.propietario.nomePropietario %></td>
-				<td><%= mascota.value.propietario.telPropietario %></td>
+				<% if(mascotas[i].value.nomeMascota!=null &&mascotas[i].value.tipoMascota!=null &&mascotas[i].value.razaMascota!=null&&mascotas[i].value.generoMascota!=null){ %>
+				<td><%= mascotas[i].value.nomeMascota %></td>
+				<td><%= mascotas[i].value.tipoMascota %></td>
+				<td><%= mascotas[i].value.razaMascota %></td>
+				<td><%= mascotas[i].value.generoMascota %></td>
+				<%} %>
+				<% if(mascotas[i].value.propietario!=null){ %>
+				<td><%= mascotas[i].value.propietario.nomePropietario %></td>
+				<td><%= mascotas[i].value.propietario.telPropietario %></td>
 				<td>
-					<form method="POST" action="/adminCouchBD/delete/<%= mascota.key %>">
-						<input type="hidden" value="<%= mascota.value.rev %>" name="rev">
+					<form method="POST" action="/adminCouchDB/delete/<%= mascotas[i].key %>">
+						<input type="hidden" value="<%= mascotas[i].value.rev %>" name="rev">
 						<input type="submit" value=" Delete ">
 					</form>
 				</td>
+				<%} %>
 			</tr>
-			<%}); %>
+			<%} %>
 		</table>
 	</form>	
 	<script type="text/javascript" src="ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>

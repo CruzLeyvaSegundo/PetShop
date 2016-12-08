@@ -16,7 +16,7 @@ couch.listDatabases().then(function(dbs){
 });
 
 const dbName='mascotas';
-const viewUrl = '_design/all_mascotas/_view/all';
+const viewUrl = '_design/all_mascotas/_view/allMascotas';
 
 const app = express();
 
@@ -91,6 +91,21 @@ app.post('/cadastro', function (req, res) {
 				propietario: {
 						nomePropietario: nomePropietario,
 						telPropietario: telPropietario}
+			}).then(
+				function(data,headers,status){
+					//res.redirect('/');
+				},
+				function(err){
+					res.send(err);
+				});
+		});
+		//Insersao dos donos
+		couch.uniqid().then(function(ids){
+			const id = ids[0];
+			couch.insert(dbName,{
+				_id: id,
+				nomePropietario: nomePropietario,
+				telPropietario: telPropietario
 			}).then(
 				function(data,headers,status){
 					res.redirect('/');
