@@ -33,17 +33,17 @@
 			<% if( (data[i].value)[etiqueta[j]]!=null){%>
 			<% count++;%>
 			<% }}%>
-		<% if(  (data[i].value)[etiqueta[0]]!=null && count==etiqueta.length){%>
+		<% if(  (data[i].value)[etiqueta[0]]!=null && (count==etiqueta.length||(tabela=="Pets"&&count==4))){%>
   		<tr>
 			<% for(var j=0;j<etiqueta.length;j++){ %>
 				<% var str = etiqueta[j]; %>
 				<% if(  (data[i].value)[str]!=null){%>
 				<td><%= (data[i].value)[str] %></td>
-				<% }else if(j>0){%>
-				<td><%= (data[1].value[aux])[str] %></td>
+				<% }else if(j>3){%>
+				<td><%= (data[i].value[aux])[str] %></td>
 			<% }} %>
 			<td>
-				<form method="POST" action="/adminCouchDB/delete/<%= data[i].key %>">
+				<form method="POST" action="/adminCouchDB/<%= dir %>/delete/<%= data[i].key %>">
 					<input type="hidden" value="<%= data[i].value.rev %>" name="rev">
 					<input type="submit" value=" Delete ">
 				</form>

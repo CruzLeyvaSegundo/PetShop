@@ -45,15 +45,15 @@ app.get('/', function (req, res) {
     res.render('index', {});
 });
 
-app.get('/cadastro', function (req, res) {
+app.get('/Cadastro', function (req, res) {
     res.render('cadastro', {});
 });
 
-app.get('/produtos', function (req, res) {
+app.get('/Produtos', function (req, res) {
     res.render('productos', {});
 });
 
-app.get('/servicios', function (req, res) {
+app.get('/Servicios', function (req, res) {
     res.render('servicios', {});
 });
 
@@ -69,6 +69,7 @@ app.get('/adminCouchDB/Mascotas', function (req, res) {
 				tabela: 'Pets',
 				etiqueta: ['nomeMascota','tipoMascota','razaMascota','generoMascota','nomePropietario','telPropietario'],
 				aux:'propietario',
+				dir: 'Mascotas',
 				data: data.data.rows
 			});
 		},
@@ -85,6 +86,7 @@ app.get('/adminCouchDB/Donos', function (req, res) {
 				tabela: 'Donos',
 				etiqueta: ['nomePropietario','telPropietario'],
 				aux: null,
+				dir: 'Donos',
 				data: data.data.rows
 			});
 		},
@@ -101,6 +103,7 @@ app.get('/adminCouchDB/Produtos', function (req, res) {
 				tabela: 'Produtos pedidos',
 				etiqueta: ['item','precio','nomSolicitante','dirPedido'],
 				aux: null,
+				dir: 'Produtos',
 				data: data.data.rows
 			});
 		},
@@ -117,6 +120,7 @@ app.get('/adminCouchDB/Servicios', function (req, res) {
 				tabela: 'Servicios solicitados',
 				etiqueta: ['item','precio','nomMascota','nomPropietario','dirPedido'],
 				aux: null,
+				dir: 'Servicios',
 				data: data.data.rows
 			});
 		},
@@ -126,7 +130,7 @@ app.get('/adminCouchDB/Servicios', function (req, res) {
 	//console.log(dataMascota);
 });
 
-app.post('/cadastro', function (req, res) {
+app.post('/Cadastro', function (req, res) {
 	var nomeMascota = req.body.nomeMascota,
 		tipoMascota	= req.body.tipoMascota,
 		razaMascota	= req.body.razaMascota,
@@ -141,6 +145,7 @@ app.post('/cadastro', function (req, res) {
 	console.log("telPropietario :" + telPropietario);	
 	if(verificarCadastro(nomeMascota,razaMascota,nomePropietario,telPropietario))
 	{
+		console.log("Entreeeeee!!!");
 		// Insersao das mascotas
 		couch.uniqid().then(function(ids){
 			const id = ids[0];
@@ -170,7 +175,7 @@ app.post('/cadastro', function (req, res) {
 				telPropietario: telPropietario
 			}).then(
 				function(data,headers,status){
-					res.redirect('/');
+					res.redirect('/Cadastro');
 				},
 				function(err){
 					res.send(err);
@@ -181,41 +186,84 @@ app.post('/cadastro', function (req, res) {
 	}
 	else
 		console.log("Error?!!!");
+	//res.render('cadastro',{});
 });
-app.post('/productos', function (req, res) {
-	var nomSolicitante = req.body.nomSolicitante,
+app.post('/Produtos', function (req, res) {
+	var item = req.body.item,
+		precio = '20',
+		nomSolicitante = req.body.nomSolicitante,
 		dirPedido	= req.body.dirPedido;
+	console.log("item :" + item);
+	console.log("precio :" + precio);
 	console.log("nomSolicitante :" + nomSolicitante);
 	console.log("dirPedido :" + dirPedido);
 	if(verificarPedido(nomSolicitante,dirPedido))
 	{
+		couch.uniqid().then(function(ids){
+		const id = ids[0];
+		couch.insert(dbName,{
+			_id: id,
+			item: item,
+			precio: precio,
+			nomSolicitante: nomSolicitante,
+			dirPedido: dirPedido
+			}).then(
+				function(data,headers,status){
+					res.redirect('/Produtos');
+				},
+				function(err){
+					res.send(err);
+				});
+		});
 		console.log("registro completo!!!");
-		res.render('productos',{});
+		//res.render('productos',{});
 	}
 });
 
-app.post('/servicios', function (req, res) {
-	var nomMascota = req.body.nomMascota,
+app.post('/Servicios', function (req, res) {
+	var item = req.body.item,
+		precio = '20',
+		nomMascota = req.body.nomMascota,
 		nomPropietario	= req.body.nomPropietario,
 		dirPedido = req.body.dirPedido;
+	console.log("item :" + item);
+	console.log("precio :" + precio);
 	console.log("nomMascota :" + nomMascota);
 	console.log("nomPropietario :" + nomPropietario);
 	console.log("dirPedido :" + dirPedido);
 	if(verificarServicio(nomMascota,nomPropietario,dirPedido))
 	{
+		couch.uniqid().then(function(ids){
+		const id = ids[0];
+		couch.insert(dbName,{
+			_id: id,
+			item: item,
+			precio: precio,
+			nomMascota: nomMascota,
+			nomPropietario: nomPropietario,
+			dirPedido: dirPedido
+			}).then(
+				function(data,headers,status){
+					res.redirect('/Servicios');
+				},
+				function(err){
+					res.send(err);
+				});
+		});
 		console.log("registro completo!!!");
-		res.render('servicios',{});
+		//res.render('servicios',{});
 	}
 });
 app.post('/adminCouchDB', function (req, res) {
 	res.redirect('/adminCouchDB');
 });
-app.post('/adminCouchDB/delete/:id', function (req, res) {
+app.post('/adminCouchDB/:dir/delete/:id', function (req, res) {
+	const dir = req.params.dir;
 	const id = req.params.id;
 	const rev = req.body.rev;
 	couch.del(dbName,id,rev).then(
 		function(data, headers, status){
-				res.redirect('/adminCouchDB');
+				res.redirect('/adminCouchDB/'+dir);
 		},
 		function(err){
 			res.send(err);
