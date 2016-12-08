@@ -16,7 +16,9 @@ couch.listDatabases().then(function(dbs){
 });
 
 const dbName='mascotas';
-const viewUrl = '_design/all_mascotas/_view/all';
+const viewMascotasUrl = '_design/all_mascotas/_view/allMascotas';
+const viewPropietariosUrl = '_design/all_propietarios/_view/allPropietarios';
+
 
 const app = express();
 
@@ -53,7 +55,7 @@ app.get('/servicios', function (req, res) {
 });
 
 app.get('/adminCouchDB', function (req, res) {
-	couch.get(dbName,viewUrl).then(
+	couch.get(dbName,viewMascotasUrl).then(
 		function(data, headers, status){
 			console.log(data.data.rows);
 			res.render('adminDB',{
@@ -80,6 +82,7 @@ app.post('/cadastro', function (req, res) {
 	console.log("telPropietario :" + telPropietario);	
 	if(verificarCadastro(nomeMascota,razaMascota,nomePropietario,telPropietario))
 	{
+		// Insersao das mascotas
 		couch.uniqid().then(function(ids){
 			const id = ids[0];
 			couch.insert(dbName,{
@@ -93,14 +96,14 @@ app.post('/cadastro', function (req, res) {
 						telPropietario: telPropietario}
 			}).then(
 				function(data,headers,status){
-					res.redirect('/');
+					//res.redirect('/');
 				},
 				function(err){
 					res.send(err);
 				});
 		});
+
 		console.log("registro completo!!!");
-		//res.render('cadastro',{});
 	}
 	else
 		console.log("Error?!!!");
