@@ -12,17 +12,18 @@
 			<a class="navbar-brand" href="#">adminCouchDB PETSHOP</a> |
 		</div>
 	</nav>
-	<form>
+	<form action="/adminCouchDB" method="POST">
 		<h1>Mascotas</h1>
 		<br>
 		<table class="table table-striped table-bordered">
 			<tr>
-				<td>nomeMascota</td>
-				<td>tipoMascota</td>
-				<td>razaMascota</td>
-				<td>generoMascota</td>
-				<td>nomePropietario</td>
-				<td>telPropietario</td>
+				<td><b>nomeMascota</b></td>
+				<td><b>tipoMascota</b></td>
+				<td><b>razaMascota</b></td>
+				<td><b>generoMascota</b></td>
+				<td><b>nomePropietario</b></td>
+				<td><b>telPropietario</b></td>
+				<td><b>Action</b></td>
 			</tr>
 			<% for(var i=0;i<mascotas.length;i++){ %>
 			<tr>
@@ -45,6 +46,7 @@
 			</tr>
 			<%} %>
 		</table>
+		<input type="submit" value="Actualizar">
 	</form>	
 	<script type="text/javascript" src="ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js"></script>
