@@ -267,7 +267,7 @@ app.post('/Produtos', function (req, res) {
 
 app.post('/Servicios', function (req, res) {
 	var item = req.body.item,
-		precio = '20',
+		precio = '25',
 		nomMascota = req.body.nomMascota,
 		nomPropietario	= req.body.nomPropietario,
 		dirPedido = req.body.dirPedido;
