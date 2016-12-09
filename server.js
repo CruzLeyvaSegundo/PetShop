@@ -3,7 +3,8 @@ const express = require('express'),
 	//path = require('path'),
 	nodeCouchDb = require('node-couchdb'),
 	verificar = require('./public/scripts/verificarDados.js');
-	
+
+// Configuraçao da conexao da base de dados
 const couch = new nodeCouchDb({
 	auth:{
 		user:'admin',
@@ -15,8 +16,10 @@ couch.listDatabases().then(function(dbs){
 	console.log(dbs);
 });
 
-const dbName='mascotas';
+const dbName='mascotas'; //Nome da Base de Dados
 
+
+// Views criadas na insterfaz do couchdb, onde cada Url e utilizado para obter os documentos.
 const viewMascotasUrl = '_design/all_mascotas/_view/allMascotas';
 const viewPropietariosUrl = '_design/all_propietarios/_view/allPropietarios';
 const viewProdutosUrl = '_design/all_productos/_view/allProductos';
@@ -46,15 +49,35 @@ app.get('/', function (req, res) {
 });
 
 app.get('/Cadastro', function (req, res) {
-    res.render('cadastro', {});
+    res.render('cadastro', {
+							nomeMascota: null,
+							tipoMascota: 'cachorro',
+							razaMascota: null,
+							generoMascota: 'macho',
+							nomePropietario: null,
+							telPropietario: null,
+							span1: null,
+							span2: null,
+							span3: null,
+							span4: null});
 });
 
 app.get('/Produtos', function (req, res) {
-    res.render('productos', {});
+    res.render('productos', {
+							nomSolicitante: null,
+							dirPedido: null,
+							span1: null,
+							span2: null});
 });
 
 app.get('/Servicios', function (req, res) {
-    res.render('servicios', {});
+    res.render('servicios', {
+							nomMascota: null,
+							nomPropietario: null,
+							dirPedido: null,
+							span1: null,
+							span2: null,
+							span3: null});
 });
 
 app.get('/adminCouchDB', function (req, res) {
@@ -137,15 +160,15 @@ app.post('/Cadastro', function (req, res) {
 		generoMascota = req.body.generoMascota,
 		nomePropietario	= req.body.nomePropietario,
 		telPropietario	= req.body.telPropietario;
+	var span = verificarCadastro(nomeMascota,razaMascota,nomePropietario,telPropietario);
 	console.log("nombreMascota :" + nomeMascota);
 	console.log("tipoMascota :" + tipoMascota);
 	console.log("razaMascota :" + razaMascota);
 	console.log("generoMascota :" + generoMascota);
 	console.log("nomePropietario :" + nomePropietario);
 	console.log("telPropietario :" + telPropietario);	
-	if(verificarCadastro(nomeMascota,razaMascota,nomePropietario,telPropietario))
+	if(span==null)
 	{
-		console.log("Entreeeeee!!!");
 		// Insersao das mascotas
 		couch.uniqid().then(function(ids){
 			const id = ids[0];
@@ -185,8 +208,20 @@ app.post('/Cadastro', function (req, res) {
 		console.log("registro completo!!!");
 	}
 	else
-		console.log("Error?!!!");
-	//res.render('cadastro',{});
+	{
+		console.log(span);
+		res.render('cadastro',{
+								nomeMascota: nomeMascota,
+								tipoMascota: tipoMascota,
+								razaMascota: razaMascota,
+								generoMascota: generoMascota,
+								nomePropietario: nomePropietario,
+								telPropietario: telPropietario,
+								span1: span.span1,
+								span2: span.span2,
+								span3: span.span3,
+								span4: span.span4});
+	}
 });
 app.post('/Produtos', function (req, res) {
 	var item = req.body.item,
@@ -197,7 +232,9 @@ app.post('/Produtos', function (req, res) {
 	console.log("precio :" + precio);
 	console.log("nomSolicitante :" + nomSolicitante);
 	console.log("dirPedido :" + dirPedido);
-	if(verificarPedido(nomSolicitante,dirPedido))
+	
+	var span =verificarPedido(nomSolicitante,dirPedido);
+	if(span==null)
 	{
 		couch.uniqid().then(function(ids){
 		const id = ids[0];
@@ -218,6 +255,14 @@ app.post('/Produtos', function (req, res) {
 		console.log("registro completo!!!");
 		//res.render('productos',{});
 	}
+	else
+	{
+		res.render('productos',{
+								nomSolicitante: nomSolicitante,
+								dirPedido: dirPedido,
+								span1: span.span1,
+								span2: span.span2});
+	}
 });
 
 app.post('/Servicios', function (req, res) {
@@ -226,12 +271,13 @@ app.post('/Servicios', function (req, res) {
 		nomMascota = req.body.nomMascota,
 		nomPropietario	= req.body.nomPropietario,
 		dirPedido = req.body.dirPedido;
+	var span =verificarServicio(nomMascota,nomPropietario,dirPedido);
 	console.log("item :" + item);
 	console.log("precio :" + precio);
 	console.log("nomMascota :" + nomMascota);
 	console.log("nomPropietario :" + nomPropietario);
 	console.log("dirPedido :" + dirPedido);
-	if(verificarServicio(nomMascota,nomPropietario,dirPedido))
+	if(span==null)
 	{
 		couch.uniqid().then(function(ids){
 		const id = ids[0];
@@ -251,7 +297,16 @@ app.post('/Servicios', function (req, res) {
 				});
 		});
 		console.log("registro completo!!!");
-		//res.render('servicios',{});
+	}
+	else
+	{
+		res.render('servicios',{
+								nomMascota: nomMascota,
+								nomPropietario: nomPropietario,
+								dirPedido: dirPedido,
+								span1: span.span1,
+								span2: span.span2,
+								span3: span.span3});
 	}
 });
 app.post('/adminCouchDB', function (req, res) {

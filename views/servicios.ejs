@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>PetShop</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
         <meta charset="UTF-8" />
 		<style type="text/css">
@@ -61,18 +61,18 @@
 						 <input type="text" id="precio" name="precio" value="25" disabled>
 						 <br>
 						 Nome da Mascota:<br>
-						 <input type="text" id="nomMascota" name="nomMascota">
-						 <span class='msg-erro msg-nomMascota'></span>
+						 <input type="text" id="nomMascota" name="nomMascota" value=<%= nomMascota %> >
+						 <span class='msg-erro msg-nomMascota'><%= span1 %></span>
 						 <br>
 						 Nome do proprietário:<br>
-						 <input type="text" id="nomPropietario" name="nomPropietario">
-						 <span class='msg-erro msg-nomPropietario'></span>
+						 <input type="text" id="nomPropietario" name="nomPropietario" value=<%= nomPropietario %> >
+						 <span class='msg-erro msg-nomPropietario'><%= span2 %></span>
 						 <br>
 						 Endereço do proprietário:<br>
-						 <input type="text" id="dirPedido" name="dirPedido">
-						 <span class='msg-erro msg-dirPedido'></span>
+						 <input type="text" id="dirPedido" name="dirPedido" value=<%= dirPedido %> >
+						 <span class='msg-erro msg-dirPedido'><%= span3 %></span>
 						 <br><br>
-						<input type="submit" value="Solicitar" class="col-12 center boton" id='botao' onclick="validaServicio()">	
+						<input type="submit" value="Solicitar" class="col-12 center boton" id='botao' >	
 					</form>
                 </div>
             </div>
@@ -88,6 +88,5 @@
                 </div>
             </div>
         </footer>
-		<script type="text/javascript" src="scripts/validarCampos.js"></script>
     </body>
 </html>

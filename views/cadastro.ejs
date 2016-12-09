@@ -50,30 +50,42 @@
                 <form id="form" action="/Cadastro" method="POST">
 					<h3>Cadastro mascota</h3><br>						
 					Nome da mascota:<br>
-					<input type="text" id="nomeMascota" name="nomeMascota" placeholder="Infome o NomePet">
-					<span class='msg-erro msg-nomeMascota'></span>
+					<input type="text" id="nomeMascota" name="nomeMascota" placeholder="Infome o NomePet" value=<%= nomeMascota %> >
+					<span class='msg-erro msg-nomeMascota'><%= span1 %></span>
 					<br>
 					Tipo:<br>
-					<input type="radio" name="tipoMascota" value="cachorro" checked>Cachorro
-					<input type="radio" name="tipoMascota" value="gato"> Gato
-					<br>		
+					<%if(tipoMascota=="cachorro"){%>
+						<input type="radio" name="tipoMascota" value="cachorro" checked>Cachorro
+						<input type="radio" name="tipoMascota" value="gato" >Gato
+						
+					<%}else if(tipoMascota=="gato"){%>	
+						<input type="radio" name="tipoMascota" value="cachorro">Cachorro
+						<input type="radio" name="tipoMascota" value="gato" checked>Gato
+					<%}%>	
+					<br>					
 					Raça:<br>
-					<input type="text" id="razaMascota" name="razaMascota" placeholder="Infome a raçaPet">
-					<span class='msg-erro msg-razaMascota'></span>
+					<input type="text" id="razaMascota" name="razaMascota" placeholder="Infome a raçaPet" value=<%= razaMascota %> >
+					<span class='msg-erro msg-razaMascota'><%= span2 %></span>
 					<br>
 					Género:<br>
-					<input type="radio" name="generoMascota" value="macho" checked>Macho.
-					<input type="radio" name="generoMascota" value="hembra">Fêmea
+					<%if(generoMascota=="macho"){%>
+						<input type="radio" name="generoMascota" value="macho" checked>Macho.
+						<input type="radio" name="generoMascota" value="hembra">Fêmea
+						
+					<%}else if(generoMascota=="hembra"){%>	
+						<input type="radio" name="generoMascota" value="macho">Macho.
+						<input type="radio" name="generoMascota" value="hembra" checked>Fêmea
+					<%}%>	
 					<br>
 					Nome do proprietário:<br>
-					<input type="text" id="nomePropietario" name="nomePropietario" placeholder="Informe nome do propietario">
-					<span class='msg-erro msg-nomePropietario'></span>
+					<input type="text" id="nomePropietario" name="nomePropietario" placeholder="Informe nome do propietario" value=<%= nomePropietario %> >
+					<span class='msg-erro msg-nomePropietario'><%= span3 %></span>
 					<br>
 					Telefone do contato:<br>
-					<input type="text" id="telPropietario" name="telPropietario" placeholder="Informe um telef. de contato">
-					<span class='msg-erro msg-telPropietario'></span>
+					<input type="text" id="telPropietario" name="telPropietario" placeholder="Informe um telef. de contato" value=<%= telPropietario %> >
+					<span class='msg-erro msg-telPropietario'><%= span4 %></span>
 					<br><br>
-					<input type="submit" value="Cadastrar" class="col-12 center boton" id='botao' onclick="validaCadastro()">		
+					<input type="submit" value="Cadastrar" class="col-12 center boton" id='botao'>		
 				</form>
             </div>
 
@@ -88,6 +100,5 @@
                 </div>
             </div>
         </footer>
-		<script type="text/javascript" src="scripts/validarCampos.js"></script>
     </body>
 </html>

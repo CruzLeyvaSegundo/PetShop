@@ -10,7 +10,7 @@
     -moz-background-size: 100% 88%;
     text-align: center;
     color: #1e1e28;/*Color de letra para el body*/
-    padding: 20% 0;
+    padding: 18% 0;
     box-sizing: border-box;
     height: 100%;
 }
@@ -53,6 +53,19 @@
     text-align: left;
     color: #1e1e28;
     padding: 10% 50%;
+    box-sizing: border-box;
+    height: 100%;
+}
+.homeAdmin{
+	background-repeat: no-repeat;
+    background-position: center center;
+	background-attachment: fixed;
+    background-size: 100% 88%;
+    -webkit-background-size: 100% 88%;
+    -moz-background-size: 100% 88%;
+    text-align: center;
+    color: #1e1e28;/*Color de letra para el body*/
+    padding: 8% 0;
     box-sizing: border-box;
     height: 100%;
 }

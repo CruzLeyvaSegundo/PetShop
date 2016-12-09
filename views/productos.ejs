@@ -62,14 +62,14 @@
 						<input type="text" id="precio" name="precio" value="20" disabled>
 						<br>
 						 Nome do solicitante:<br>
-						<input type="text" id="nomSolicitante" name="nomSolicitante" placeholder="Informe nome do solicitante">
-						<span class='msg-erro msg-nomSolicitante'></span>
+						<input type="text" id="nomSolicitante" name="nomSolicitante" placeholder="Informe nome do solicitante" value=<%= nomSolicitante %> >
+						<span class='msg-erro msg-nomSolicitante'><%= span1 %></span>
 						<br>
 						 Endereço do solicitante:<br>
-						<input type="text" id="dirPedido" name="dirPedido" placeholder="Informe endereço do solicitante">
-						<span class='msg-erro msg-dirPedido'></span>
+						<input type="text" id="dirPedido" name="dirPedido" placeholder="Informe endereço do solicitante" value=<%= dirPedido %> >
+						<span class='msg-erro msg-dirPedido'><%= span2 %></span>
 						<br><br>
-						<input type="submit" value="Comprar" class="col-12 center boton" id='botao' onclick="validaPedido()">		
+						<input type="submit" value="Comprar" class="col-12 center boton" id='botao'>		
 					</form>
                 </div>
             </div>
@@ -85,6 +85,5 @@
                 </div>
             </div>
         </footer>
-		<script type="text/javascript" src="scripts/validarCampos.js"></script>
     </body>
 </html>
