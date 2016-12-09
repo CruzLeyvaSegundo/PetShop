@@ -81,7 +81,7 @@ app.get('/Servicios', function (req, res) {
 });
 
 app.get('/adminCouchDB', function (req, res) {
-	res.render('adminDB',{tabela:'Tabela',etiqueta:['item1','item2','item3'],aux:null,
+	res.render('adminDB',{dir:null,tabela:'Tabela',etiqueta:['item1','item2','item3'],aux:null,
 							data:[]});
 });
 app.get('/adminCouchDB/Mascotas', function (req, res) {
